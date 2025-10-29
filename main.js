@@ -1,4 +1,4 @@
-// locations dataset
+// Location dataset
 const locations = [
     {
         id: "1",
@@ -119,8 +119,8 @@ function updatePins() {
         const x = (pos.x * 0.5 + 0.5) * renderer.domElement.clientWidth;
         const y = (-pos.y * 0.5 + 0.5) * renderer.domElement.clientHeight;
         pin.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-        // hide pin if on far side of globe
-        // compare direction from globe center to pin and globe center to camera
+        // Hide pin if on far side of globe
+        // Compare direction from globe center to pin and globe center to camera
         const globeCenter = new THREE.Vector3(0, 0, 0);
         const toCamera = camera.position.clone().sub(globeCenter).normalize();
         const toPin = worldPos.clone().sub(globeCenter).normalize();
@@ -132,8 +132,9 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 100);
+
+scene.background = new THREE.Color(0x141414);const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 15);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -191,4 +192,4 @@ function animate() {
     renderer.render(scene, camera);
     updatePins();
 }
-animate()
+animate();
