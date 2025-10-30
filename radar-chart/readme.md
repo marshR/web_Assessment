@@ -37,4 +37,3 @@ Outputs to `dist/` directory.
 - The project uses Vite, not Parcel (despite Parcel being in devDependencies)
 - There are no tests configured
 - No linting or formatting tools are set up
-- The `@cubejs-client/core` dependency is installed but not imported anywhere, suggesting potential future integration with Cube.js for data analytics
