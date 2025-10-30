@@ -4,8 +4,7 @@ This repository contains a web assessment with multiple interactive data visuali
 
 ## Live Demo
 
-Visit the GitHub Pages site to see both challenges in action:
-https://YOUR_USERNAME.github.io/web_assessment/
+https://marshR.github.io/web_assessment/
 
 ## Challenges
 
