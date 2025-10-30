@@ -1,3 +1,6 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
 // Location dataset
 const locations = [
     {
@@ -128,8 +131,6 @@ function updatePins() {
         pin.style.display = visible ? 'flex' : 'none';
     });
 }
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
 
