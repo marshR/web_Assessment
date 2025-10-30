@@ -1,9 +1,5 @@
 # readme.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Overview
-
 This is an interactive 3D globe visualization project built with Three.js and Vite. The project displays a rotating Earth with clickable location pins that link to specific branch URLs. It demonstrates 3D graphics, texture mapping, camera controls, and dynamic HTML element positioning over a 3D scene.
 
 ## Architecture

@@ -1,9 +1,5 @@
 # readme.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Overview
-
 This is a simple Chart.js visualization project that displays a radar chart using Vite as the build tool. The project demonstrates basic data visualization using Chart.js 4.x with a minimal setup.
 
 ## Architecture
