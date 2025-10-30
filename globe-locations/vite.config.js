@@ -12,5 +12,10 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js'
       }
     }
+  },
+  experimental: {
+    renderBuiltUrl(filename) {
+      return './' + filename
+    }
   }
 })
