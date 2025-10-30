@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>radar_chart</title>
+    <title>r_chart: Marce Romero</title>
+    <style>
+        body {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #F2F0EF;
+        }
+        #container {
+            width: 700px;
+            margin: 0 auto;
+        }
+        #cities-chart {
+            background-color: #F2F0EF;
+        }
+        .city-picker-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .city-picker-container label {
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 12px;
+            font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+        }
+        .city-tags {
+            display: inline-flex;
+            gap: 10px;
+        }
+        .city-tag {
+            padding: 6.5px 12.5px;
+            font-size: 9.5px;
+            font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            background-color: #F2F0EF;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .city-tag:hover {
+            border-color: #002c78;
+            background-color: #e8e6e5;
+        }
+        .city-tag:focus {
+            outline: 3px solid #002c78;
+            outline-offset: 2px;
+        }
+        .city-tag.active {
+            border-color: #002c78;
+            background-color: #002c78;
+            color: white;
+        }
+        .sr-only {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-    <!-- Hidden input to store selected city name -->
+    <main>
+        <h1 style="text-align: center; font-size: 24px; margin-bottom: 20px; color: #666666;">City Comparison Radar Chart</h1>
 
-    <div id="container" style="width: 700px;">
-        <input type="hidden" id="selected-city" value="Warsaw">
-        <canvas id="cities-chart"></canvas>
-    </div>
+        <!-- Hidden input to store selected city name -->
+        <div id="container">
+            <input type="hidden" id="selected-city" value="Warsaw" aria-label="Selected city">
+            <canvas id="cities-chart" role="img" aria-label="Radar chart comparing Global, Regional, and City-level metrics across Social Impact, Infrastructure, Market Attractiveness, System Efficiency, and Innovation for the selected city"></canvas>
+            <div class="city-picker-container">
+                <label id="city-filter-label">Filter by City:</label>
+                <div class="city-tags" role="group" aria-labelledby="city-filter-label">
+                    <button class="city-tag" data-city="Warsaw" aria-pressed="true">Warsaw</button>
+                    <button class="city-tag" data-city="Kuala Lumpur" aria-pressed="false">Kuala Lumpur</button>
+                    <button class="city-tag" data-city="Mexico City" aria-pressed="false">Mexico City</button>
+                </div>
+            </div>
+            <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" id="chart-status"></div>
+        </div>
+    </main>
     <script type="module" src="cities-chart.js"></script>
 </body>
 </html>

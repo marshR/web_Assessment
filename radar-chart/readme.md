@@ -1,34 +1,51 @@
-# readme.md
+# radar chart
 
-This is a simple Chart.js visualization project that displays a radar chart using Vite as the build tool. The project demonstrates basic data visualization using Chart.js 4.x with a minimal setup.
+// interactive radar chart that compares cities across different metrics.
 
-## Architecture
+## what it does
 
-**Single-File Application**: The entire application logic resides in `cities-chart.js`, which is directly referenced by `index.html`. There is just one main JavaScript file that imports Chart.js and renders a radar chart.
+// shows data for three cities: warsaw, kuala lumpur, and mexico city
+// displays five metrics: social impact, infrastructure, market attractiveness, system efficiency, and innovation
+// compares global averages vs regional averages vs specific city data
+// click the filter tags below the chart to switch between cities
 
-**Chart Implementation**: The chart is initialized using an async function that creates a Chart.js instance with static data.
+## before you start
 
-**Dependencies**:
-- `chart.js` (v4.5.1) - Core charting library
-- `@cubejs-client/core` (v0.31.0) - Listed but not currently used in the code
-- `vite` (v6.4.1) - Build tool and dev server
+// you need node.js 16 or higher and npm 8 or higher installed on your machine.
 
-## Development Commands
 
-**Start development server**:
+## setup
+
+// clone or download this project, then run:
+
+```bash
+npm install
+```
+// this installs chart.js and vite (the only dependencies you need).
+
+
+## running it
+
+// start the dev server:
+
 ```bash
 npm run dev
 ```
-This starts Vite dev server at http://127.0.0.1:5173
 
-**Build for production**:
+// open your browser and go to http://127.0.0.1:5173
+
+
+## building for production
+
+// create a build:
+
 ```bash
 npm run build
 ```
-Outputs to `dist/` directory.
+// your files will be in the `dist/` folder
 
-## Important Notes
+## project structure
 
-- The project uses Vite, not Parcel (despite Parcel being in devDependencies)
-- There are no tests configured
-- No linting or formatting tools are set up
+// everything lives in two files:
+// - `index.html` - the page layout and styles
+// - `cities-chart.js` - all the chart logic and data

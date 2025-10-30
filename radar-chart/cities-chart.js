@@ -67,7 +67,7 @@ function renderChart(cityName) {
                     backgroundColor: 'rgba(39, 170, 245, 0.3)', // blue
                     borderColor: 'rgba(16, 151, 229, 0.7)',
                     borderWidth: 2,
-                    pointRadius: 3,
+                    pointRadius: 1,
                 },
                 {
                     label: cityData.region,
@@ -76,7 +76,7 @@ function renderChart(cityName) {
                     backgroundColor: 'rgba(76, 16, 229, 0.25)', // purple
                     borderColor: 'rgba(76, 16, 229, 0.7)',
                     borderWidth: 2,
-                    pointRadius: 3,
+                    pointRadius: 1,
                 },
                 {
                     label: cityData.city_name,
@@ -85,7 +85,7 @@ function renderChart(cityName) {
                     backgroundColor: 'rgba(8, 175, 10, 0.28)', // green
                     borderColor: 'rgba(8, 175, 10, 0.7)',
                     borderWidth: 2,
-                    pointRadius: 3,
+                    pointRadius: 1,
                 }
             ]
         },
@@ -93,15 +93,14 @@ function renderChart(cityName) {
             plugins: {
                 title: {
                     display: true,
-                    text: `City Comparison`,
+                    text: `${cityData.region}, ${cityData.city_name}  `,
                     align: 'center',
                     font: {
-                        size: 18,
+                        size: 16,
                     }
                 },
                 subtitle:{
-                    display: true,
-                    text: `${cityData.city_name}. ${cityData.region} `,
+                    display: false,
                     align: 'center',
                     font: {
                         size: 14,
@@ -109,10 +108,24 @@ function renderChart(cityName) {
                 },
                 legend: {
                     display: true,
-                    position: 'top', 
+                    position: 'top',
                     labels: {
                         font: {
                             family: "Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana",
+                        },
+                        usePointStyle: true,
+                        pointStyle: 'rectRounded',
+                        padding: 19,
+                        boxWidth: 40,
+                        boxHeight: 15
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
                         }
                     }
                 }
@@ -128,6 +141,11 @@ function renderChart(cityName) {
                     beginAtZero: true,
                     ticks: {
                         stepSize: 20
+                    },
+                    pointLabels: {
+                        font: {
+                            size: 12
+                        }
                     }
                 }
             }
@@ -138,8 +156,49 @@ function renderChart(cityName) {
 // Initialize chart with value from hidden input
 function initChart() {
     const hiddenInput = document.getElementById('selected-city');
-    const selectedCity = hiddenInput.value || 'Mexico City'; // Default to mexico if empty
+    const cityTags = document.querySelectorAll('.city-tag');
+    const chartStatus = document.getElementById('chart-status');
+    const selectedCity = hiddenInput.value || 'Warsaw'; // Default to Warsaw if empty
+
+    // Set initial active state for the tag that matches hidden input
+    cityTags.forEach(tag => {
+        if (tag.dataset.city === selectedCity) {
+            tag.classList.add('active');
+            tag.setAttribute('aria-pressed', 'true');
+        } else {
+            tag.setAttribute('aria-pressed', 'false');
+        }
+    });
+
     renderChart(selectedCity);
+
+    // Listen for clicks on city tags
+    cityTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const selectedCityName = this.dataset.city;
+
+            // Remove active class and update aria-pressed for all tags
+            cityTags.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-pressed', 'false');
+            });
+
+            // Add active class and update aria-pressed for clicked tag
+            this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
+
+            // Update the hidden input value
+            hiddenInput.value = selectedCityName;
+
+            // Announce the change to screen readers
+            if (chartStatus) {
+                chartStatus.textContent = `Chart updated to show data for ${selectedCityName}`;
+            }
+
+            // Trigger change event on hidden input to update chart
+            hiddenInput.dispatchEvent(new Event('change'));
+        });
+    });
 
     // Listen for changes to the hidden input
     hiddenInput.addEventListener('change', function() {
