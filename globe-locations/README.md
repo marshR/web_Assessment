@@ -1,46 +1,53 @@
-# readme.md
+# globe locations
 
-This is an interactive 3D globe visualization project built with Three.js and Vite. The project displays a rotating Earth with clickable location pins that link to specific branch URLs. It demonstrates 3D graphics, texture mapping, camera controls, and dynamic HTML element positioning over a 3D scene.
+interactive 3d globe with clickable location pins.
 
-## Architecture
+## what it does
 
-**Single-File Application**: The entire application logic resides in `main.js`, which is directly referenced by `index.html`. The JavaScript file handles both the 3D globe rendering and the 2D pin overlay.
+displays a spinning earth that you can rotate and zoom
+shows three cities with clickable pins: warsaw, kuala lumpur, and mexico city
+each pin links to a specific url
+pins hide when they're on the back side of the globe
 
-**Key Components**:
-- **3D Globe**: Rendered using Three.js with realistic Earth textures (color, bump, and specular maps)
-- **Location Pins**: HTML elements positioned dynamically over 3D coordinates, with visibility culling for the far side of the globe
-- **Interactive Controls**: OrbitControls allow users to rotate, zoom, and explore the globe
-- **Location Data**: Hardcoded array of 3 locations (Warsaw, Kuala Lumpur, Mexico City) with coordinates and URLs
+## before you start
 
-**Dependencies**:
-- `three` (v0.180.0) - 3D graphics library for rendering the globe and managing the scene
-- `vite` (v6.4.1) - Build tool and dev server
+you need node.js 16 or higher and npm 8 or higher installed on your machine.
+you also need an internet connection since the earth textures load from a cdn.
 
-## Development Commands
+## setup
 
-**Start development server**:
+clone or download this project, then run:
+
+```bash
+npm install
+```
+
+this installs three.js and vite (the only dependencies you need).
+
+## running it
+
+start the dev server:
+
 ```bash
 npm run dev
 ```
-This starts Vite dev server at http://127.0.0.1:5173
 
-**Build for production**:
+open your browser and go to http://127.0.0.1:5173
+
+if port 5173 is already in use, vite will pick another port and show you which one.
+
+## building for production
+
+create a build:
+
 ```bash
 npm run build
 ```
-Outputs to `dist/` directory.
 
-## Project Files
+your files will be in the `dist/` folder.
 
-- `index.html` - Minimal HTML structure that loads the main script
-- `main.js` - All application logic (3D scene setup, location pins, animation loop)
-- `OrbitControls.js` - Placeholder file with comments (actual OrbitControls imported from three.js examples)
-- `package.json` - Project dependencies and scripts
+## project structure
 
-## Important Notes
-
-- The project uses ES6 modules with Three.js
-- OrbitControls is imported from `three/examples/jsm/controls/OrbitControls.js`
-- Earth textures are loaded from Three.js CDN (requires internet connection)
-- Pins are HTML elements overlaid on the WebGL canvas using CSS transforms
-- No tests or linting configured
+everything lives in two files:
+- `index.html` - the page structure
+- `main.js` - all the 3d globe logic and location data
