@@ -91,9 +91,9 @@ locations.forEach(loc => {
        // Add label
        const label = document.createElement('span');
        label.textContent = loc.location_name;
-    label.style.left = '22px';
-    label.style.top = '0';
-    label.style.transform = '';
+       label.style.left = '22px';
+       label.style.top = '0';
+       label.style.transform = '';
        label.style.position = 'absolute';
        label.style.fontSize = '12px';
        label.style.fontWeight = 'bold';
@@ -119,8 +119,8 @@ function updatePins() {
         const x = (pos.x * 0.5 + 0.5) * renderer.domElement.clientWidth;
         const y = (-pos.y * 0.5 + 0.5) * renderer.domElement.clientHeight;
         pin.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-        // Hide pin if on far side of globe
-        // Compare direction from globe center to pin and globe center to camera
+        // hide pin if on far side of globe
+        // compare direction from globe center to pin and globe center to camera
         const globeCenter = new THREE.Vector3(0, 0, 0);
         const toCamera = camera.position.clone().sub(globeCenter).normalize();
         const toPin = worldPos.clone().sub(globeCenter).normalize();
@@ -133,7 +133,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
 
-scene.background = new THREE.Color(0x141414);const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+scene.background = new THREE.Color(0x262626);const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 0, 15);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });

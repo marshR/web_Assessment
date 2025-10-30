@@ -1,0 +1,17 @@
+{
+  "name": "chartjs-example",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "parcel": "^2.6.2"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "@cubejs-client/core": "^0.31.0",
+    "vite": "^6.4.1"
+  }
+}
